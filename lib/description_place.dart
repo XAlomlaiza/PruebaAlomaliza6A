@@ -105,7 +105,20 @@ class DescriptionPlace extends StatelessWidget {
       children: [
         titleStars,
         description,
-        const ButtonPurple(buttonText: 'Navigate')
+        const ButtonPurple(buttonText: 'Navigate'),
+        const SizedBox(height: 20), // Espacio entre el botón y el título
+        Container(
+          margin: const EdgeInsets.only(left: 20), // Margen
+          child: Text(
+            'All Reviews',
+            style: TextStyle(
+              fontFamily: 'Lato',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey,
+            ),
+          ),
+        ),
       ],
     );
   }

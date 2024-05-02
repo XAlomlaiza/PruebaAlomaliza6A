@@ -12,7 +12,7 @@ class DescriptionPlace extends StatelessWidget {
   final String namePlace;
   final int stars;
   final String descriptionPlace;
-
+  
   @override
   Widget build(BuildContext context) {
     final star = Container(
@@ -123,3 +123,7 @@ class DescriptionPlace extends StatelessWidget {
     );
   }
 }
+
+
+
+

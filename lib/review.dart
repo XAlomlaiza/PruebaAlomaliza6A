@@ -1,99 +1,84 @@
 import 'package:flutter/material.dart';
 
 class Review extends StatelessWidget {
-  const Review(
-      {super.key,
-      required this.pathImage,
-      required this.name,
-      required this.information,
-      required this.comment});
-
   final String pathImage;
-
   final String name;
-
   final String information;
-
   final String comment;
+  final int stars; // Nuevo parámetro para la cantidad de estrellas
+
+  const Review({
+    required this.pathImage,
+    required this.name,
+    required this.information,
+    required this.comment,
+    required this.stars, // Agregamos el nuevo parámetro
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final photo = Container(
-      margin: const EdgeInsets.only(
-        top: 20,
-        left: 20,
-      ),
-      width: 80,
-      height: 80,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: AssetImage(pathImage),
-        ),
-      ),
-    );
-
-    final userName = Container(
-      margin: const EdgeInsets.only(
-        left: 20,
-      ),
-      child: Text(
-        name,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          fontFamily: 'Lato',
-          fontSize: 15,
-          color: Color(0xff58595B),
-        ),
-      ),
-    );
-
-    final userInformation = Container(
-      margin: const EdgeInsets.only(
-        left: 20,
-      ),
-      child: Text(
-        information,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.bold,
-          fontSize: 11,
-          color: Color(0xff939598),
-        ),
-      ),
-    );
-
-    final userComment = Container(
-      margin: const EdgeInsets.only(
-        left: 20,
-      ),
-      child: Text(
-        comment,
-        textAlign: TextAlign.left,
-        style: const TextStyle(
-          fontFamily: 'Lato',
-          fontSize: 11,
-          // fontWeight: FontWeight.bold,
-          color: Color(0xff231F20),
-        ),
-      ),
-    );
-
-    final userDetails = Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        userName,
-        userInformation,
-        userComment,
-      ],
-    );
-
-    return Row(
-      children: <Widget>[
-        photo,
-        userDetails,
+        Container(
+          margin: const EdgeInsets.only(
+            top: 20.0,
+            left: 20.0,
+            right: 20.0,
+          ),
+          width: 80.0,
+          height: 80.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(pathImage),
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              name,
+              style: const TextStyle(
+                fontFamily: 'Lato',
+                fontSize: 17.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              children: <Widget>[
+                Text(
+                  information,
+                  style: const TextStyle(
+                    fontFamily: 'Lato',
+                    fontSize: 13.0,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(width: 5),
+                // Aquí generamos los iconos de estrellas según la cantidad especificada
+                for (int i = 0; i < stars; i++)
+                  const Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                    size: 15,
+                  ),
+              ],
+            ),
+            Text(
+              comment,
+              style: const TextStyle(
+                fontFamily: 'Lato',
+                fontSize: 13.0,
+                color: Colors.black54,
+              ),
+            ),
+          ],
+        )
       ],
     );
   }

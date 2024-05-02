@@ -14,21 +14,21 @@ class ReviewList extends StatelessWidget {
           name: 'Varuna Yasas',
           information: '1 review 5 photos',
           comment: 'There is an amazing place in Siri Lanka',
-          stars: 5, // Agregamos la cantidad de estrellas
+          stars: 4,
         ),
         Review(
           pathImage: 'assets/images/ann.jpg',
           name: 'Varuna Yasas',
           information: '1 review 5 photos',
           comment: 'There is an amazing place in Siri Lanka',
-          stars: 4, // Agregamos la cantidad de estrellas
+          stars: 4, 
         ),
         Review(
           pathImage: 'assets/images/people.jpg',
           name: 'Varuna Yasas',
           information: '1 review 5 photos',
           comment: 'There is an amazing place in Siri Lanka',
-          stars: 3, // Agregamos la cantidad de estrellas
+          stars: 4, 
         ),
       ],
     );

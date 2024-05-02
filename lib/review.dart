@@ -5,19 +5,55 @@ class Review extends StatelessWidget {
   final String name;
   final String information;
   final String comment;
-  final int stars; // Nuevo parámetro para la cantidad de estrellas
+  final int stars; 
 
   const Review({
     required this.pathImage,
     required this.name,
     required this.information,
     required this.comment,
-    required this.stars, // Agregamos el nuevo parámetro
+    required this.stars, 
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> starWidgets = [];
+
+    for (int i = 0; i < 5; i++) {
+      if (i < stars) {
+        if (i < 3) {
+          // Primeras 3 estrellas llenas
+          starWidgets.add(const Icon(
+            Icons.star,
+            color: Colors.yellow,
+            size: 15,
+          ));
+        } else if (i == 3) {
+          // Cuarta estrella semi-llena
+          starWidgets.add(const Icon(
+            Icons.star_half,
+            color: Colors.yellow,
+            size: 15,
+          ));
+        } else {
+          // Última estrella vacía
+          starWidgets.add(const Icon(
+            Icons.star_border,
+            color: Colors.yellow,
+            size: 15,
+          ));
+        }
+      } else {
+        // Estrellas vacías
+        starWidgets.add(const Icon(
+          Icons.star_border,
+          color: Colors.grey,
+          size: 15,
+        ));
+      }
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -60,13 +96,8 @@ class Review extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 5),
-                // Aquí generamos los iconos de estrellas según la cantidad especificada
-                for (int i = 0; i < stars; i++)
-                  const Icon(
-                    Icons.star,
-                    color: Colors.yellow,
-                    size: 15,
-                  ),
+                // Agregar los iconos de estrellas
+                ...starWidgets,
               ],
             ),
             Text(

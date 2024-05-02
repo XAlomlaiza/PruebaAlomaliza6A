@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SearchTripsPage extends StatefulWidget {
   const SearchTripsPage({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class SearchTripsPage extends StatefulWidget {
 
 class _SearchTripsPageState extends State<SearchTripsPage> {
   late TextEditingController _searchController;
-  bool _searchClicked = false;
+  bool _ClicEnSearch = false;
 
   @override
   void initState() {
@@ -53,9 +54,9 @@ class _SearchTripsPageState extends State<SearchTripsPage> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                            hintText: _searchClicked ? 'Xavier Alomaliza' : 'Ingrese su búsqueda',
+                            controller: _searchController,
+                            decoration: InputDecoration(
+                            hintText: _ClicEnSearch ? 'Xavier Alomaliza' : 'Ingrese su búsqueda',
                             border: InputBorder.none,
                           ),
                         ),
@@ -63,7 +64,7 @@ class _SearchTripsPageState extends State<SearchTripsPage> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            _searchClicked = !_searchClicked;
+                            _ClicEnSearch = !_ClicEnSearch;
                           });
                         },
                         child: Icon(Icons.search),
@@ -74,7 +75,8 @@ class _SearchTripsPageState extends State<SearchTripsPage> {
               ),
             ),
             SizedBox(height: 20),
-            Expanded(
+            SizedBox(
+              height: 200, // Ajusta la altura del contenedor que contiene los botones
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,

@@ -5,14 +5,14 @@ class Review extends StatelessWidget {
   final String name;
   final String information;
   final String comment;
-  final int stars; 
+  final int stars;
 
   const Review({
     required this.pathImage,
     required this.name,
     required this.information,
     required this.comment,
-    required this.stars, 
+    required this.stars,
     Key? key,
   }) : super(key: key);
 
@@ -96,7 +96,6 @@ class Review extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 5),
-                // Agregar los iconos de estrellas
                 ...starWidgets,
               ],
             ),

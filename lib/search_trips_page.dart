@@ -10,3 +10,4 @@ class SearchTripsPage extends StatelessWidget {
     );
   }
 }
+
